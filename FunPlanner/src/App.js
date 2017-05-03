@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import ListContainer from './components/ListContainer';
-import CategoriesBar from './components/CategoriesBar';
+import CategoriesContainer from './components/CategoriesContainer';
+import adventures from './data/adventures';
 
 class App extends Component {
   render() {
     return (
       <div className='container'>
-        <CategoriesBar />
-        <ListContainer />
+        <CategoriesContainer adventures={adventures} />
       </div>
     );
   }

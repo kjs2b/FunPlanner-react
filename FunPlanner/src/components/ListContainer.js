@@ -8,13 +8,13 @@ export default class ListContainer extends Component {
   }
 
   render() {
-    //Test data******
-    const items = ['Restaurant 1', 'Hike 1', 'Adventure 3', 'Destination 2'];
-    //******Test data
+    const listedAdventures = this.props.category === 'All' ?
+      this.props.adventures : this.props.adventures.filter((adv) =>
+        adv.category === this.props.category);
     return (
       <div>
-        {items.map((item) =>
-          <ListItem item={item} key={item} />
+        {listedAdventures.map((adv) =>
+            <ListItem item={adv} key={adv.title} />
         )}
       </div>
     );

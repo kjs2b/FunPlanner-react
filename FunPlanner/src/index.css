@@ -32,8 +32,8 @@ li {
 
 .listItem {
   width: 500px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-style: outset;
   border-width: 3px;
 }
