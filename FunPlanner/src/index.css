@@ -14,6 +14,9 @@ li {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .categories {
@@ -26,3 +29,12 @@ li {
   font-weight: bold;
   cursor: pointer;
 }
+
+.listItem {
+  width: 500px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-style: outset;
+  border-width: 3px;
+}
+

@@ -8,6 +8,7 @@
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.1",
+    "eslint-config-rallycoding": "^3.2.0",
     "html-webpack-plugin": "^2.28.0",
     "react-scripts": "0.9.5",
     "style-loader": "^0.17.0",
