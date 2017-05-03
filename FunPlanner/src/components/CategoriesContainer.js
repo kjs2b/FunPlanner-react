@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import CategoriesBar from './CategoriesBar';
 import ListContainer from './ListContainer';
+import api from '../utils/api';
 
 export default class CategoriesContainer extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      selectedCategory: 'All'
+      selectedCategory: 'All',
+      adventures: []
     };
     this.changeCategory = this.changeCategory.bind(this);
+  }
+
+  componentDidMount () {
+    api.fetchAdventures();
   }
 
   changeCategory(cat) {

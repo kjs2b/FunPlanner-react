@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 
@@ -81,12 +82,13 @@ const adventures = [
 
 //Middleware:
 app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(cors());
 
 
 //Endpoints
 app.get('/adventures', (req, res) => {
-  res.status(200).send(adventures)
+  res.header('Access-Control-Allow-Origin', '*');
+  res.status(200).send(adventures);
 });
 
 //Listen
