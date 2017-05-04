@@ -11,12 +11,16 @@ li {
   list-style-type: none;
 }
 
+a {
+  text-decoration: none;
+  color: blue;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .categories {
@@ -36,5 +40,17 @@ li {
   padding-right: 10px;
   border-style: outset;
   border-width: 3px;
+  font-family: BlinkMacSystemFont;
 }
 
+.nav {
+  display: flex;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.nav li {
+  margin-right: 15px;
+}

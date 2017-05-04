@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import CategoriesContainer from './components/CategoriesContainer';
-import adventures from './data/adventures';
+import Nav from './components/Nav';
+import AddAdventureContainer from './components/AddAdventureContainer';
 
 class App extends Component {
   render() {
     return (
-      <div className='container'>
-        <CategoriesContainer adventures={adventures} />
-      </div>
+      <Router>
+        <div className='container'>
+          <Nav />
+          <Route exact path='/' component={AddAdventureContainer} />
+          <Route path='/list' component={CategoriesContainer} />
+        </div>
+      </Router>
     );
   }
 }

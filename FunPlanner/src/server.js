@@ -86,10 +86,10 @@ app.use(bodyParser.json());
 
 
 //Endpoints
-app.get('/adventures', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.status(200).send(adventures);
-});
+// app.get('/adventures', (req, res) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.status(200).send(adventures);
+// });
 
 //Listen
 const port = process.env.PORT || 4040;
