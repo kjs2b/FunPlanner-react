@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import CategoriesContainer from './components/CategoriesContainer';
 import Nav from './components/Nav';
@@ -11,8 +11,11 @@ class App extends Component {
       <Router>
         <div className='container'>
           <Nav />
-          <Route exact path='/' component={AddAdventureContainer} />
-          <Route path='/list' component={CategoriesContainer} />
+          <Switch>
+            <Route exact path='/' component={AddAdventureContainer} />
+            <Route path='/list' component={CategoriesContainer} />
+            <Route render={() => <p>Not Found</p>} />
+          </Switch>
         </div>
       </Router>
     );
