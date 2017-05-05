@@ -16,11 +16,33 @@ a {
   color: blue;
 }
 
+.addAdventureContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addAdventureForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.formItem {
+  margin-top: 15px;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .categories {
@@ -32,6 +54,10 @@ a {
   margin: 10px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.listContainer {
+
 }
 
 .listItem {

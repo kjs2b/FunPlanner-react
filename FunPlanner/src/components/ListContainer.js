@@ -12,7 +12,7 @@ export default class ListContainer extends Component {
       this.props.adventures : this.props.adventures.filter((adv) =>
         adv.category === this.props.category);
     return (
-      <div>
+      <div className='listContainer'>
         {listedAdventures.map((adv) =>
             <ListItem item={adv} key={adv.title} />
         )}

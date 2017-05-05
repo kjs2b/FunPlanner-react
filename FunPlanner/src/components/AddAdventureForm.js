@@ -32,7 +32,7 @@ export default class AddAdventureForm extends Component {
   render() {
     return (
     <form className='addAdventureForm'>
-      <div>
+      <div className='formItem'>
         <label className='formHeader' htmlFor='title'>
           Title:
         </label>
@@ -45,7 +45,7 @@ export default class AddAdventureForm extends Component {
           onChange={this.handleChange}
         />
       </div>
-      <div>
+      <div className='formItem'>
         <label className='formHeader' htmlFor='category'>
           Category:
         </label>
@@ -57,7 +57,7 @@ export default class AddAdventureForm extends Component {
           <option value='Other'>Other</option>
         </select>
       </div>
-      <div>
+      <div className='formItem'>
         <label className='formHeader' htmlFor='location'>
           Location:
         </label>
@@ -70,7 +70,7 @@ export default class AddAdventureForm extends Component {
           onChange={this.handleChange}
         />
       </div>
-      <div>
+      <div className='formItem'>
         <label className='formHeader' htmlFor='link'>
           Link:
         </label>
@@ -83,7 +83,7 @@ export default class AddAdventureForm extends Component {
           onChange={this.handleChange}
         />
       </div>
-      <div>
+      <div className='formItem'>
         <label className='formHeader' htmlFor='priority'>
           Priority:
         </label>
@@ -100,7 +100,7 @@ export default class AddAdventureForm extends Component {
           <option value='10'>10</option>
         </select>
       </div>
-      <div>
+      <div className='formItem'>
         <label className='formHeader' htmlFor='notes'>
           Notes:
         </label>
@@ -116,6 +116,7 @@ export default class AddAdventureForm extends Component {
         />
       </div>
       <input
+        className='formItem'
         type='submit'
         value='Add Adventure!'
       />

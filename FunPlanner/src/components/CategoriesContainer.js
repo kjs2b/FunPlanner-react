@@ -26,7 +26,7 @@ export default class CategoriesContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className='categoriesContainer'>
         <CategoriesBar
           onSelect={this.changeCategory}
           selectedCategory={this.state.selectedCategory}
