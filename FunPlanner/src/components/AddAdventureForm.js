@@ -104,7 +104,9 @@ export default class AddAdventureForm extends Component {
         <label className='formHeader' htmlFor='notes'>
           Notes:
         </label>
-        <input
+        <textarea
+          rows='4'
+          cols='60'
           id='notes'
           placeholder='Notes...'
           type='text'
