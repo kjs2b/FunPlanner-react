@@ -7,9 +7,9 @@ export default class AddAdventureForm extends Component {
     this.state = {
       title: '',
       location: '',
-      category: '',
+      category: 'Select a category',
       notes: '',
-      priority: null,
+      priority: 'Low',
       image: null,
       link: ''
     }
@@ -49,7 +49,11 @@ export default class AddAdventureForm extends Component {
         <label className='formHeader' htmlFor='category'>
           Category:
         </label>
-        <select>
+        <select
+          id='category'
+          value={this.state.category}
+          onChange={this.handleChange}
+        >
           <option value='Hikes'>Hikes</option>
           <option value='Restaurants'>Restaurants</option>
           <option value='Events'>Events</option>
@@ -87,17 +91,14 @@ export default class AddAdventureForm extends Component {
         <label className='formHeader' htmlFor='priority'>
           Priority:
         </label>
-        <select>
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-          <option value='3'>3</option>
-          <option value='4'>4</option>
-          <option value='5'>5</option>
-          <option value='6'>6</option>
-          <option value='7'>7</option>
-          <option value='8'>8</option>
-          <option value='9'>9</option>
-          <option value='10'>10</option>
+        <select
+          id='priority'
+          value={this.state.priority}
+          onChange={this.handleChange}
+        >
+          <option value='High'>High</option>
+          <option value='Medium'>Medium</option>
+          <option value='Low'>Low</option>
         </select>
       </div>
       <div className='formItem'>
@@ -119,6 +120,7 @@ export default class AddAdventureForm extends Component {
         className='formItem'
         type='submit'
         value='Add Adventure!'
+        onChange={()=>console.log('Select pressed')}
       />
     </form>
     );
