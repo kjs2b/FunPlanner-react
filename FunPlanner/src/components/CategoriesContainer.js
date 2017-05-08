@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CategoriesBar from './CategoriesBar';
 import ListContainer from './ListContainer';
-//import api from '../utils/api';
+import api from '../utils/api';
 import adventures from '../data/adventures';
 
 export default class CategoriesContainer extends Component {
@@ -15,9 +15,7 @@ export default class CategoriesContainer extends Component {
   }
 
   componentDidMount () {
-    //Uncomment this when the CORS localhost issue is fixed or when the 
-    //server is deployed (also uncomment import api:
-    //api.fetchAdventures();
+    api.fetchAdventures();
   }
 
   changeCategory(cat) {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import axios from 'axios';
 
 export default class AddAdventureForm extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class AddAdventureForm extends Component {
       link: ''
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -26,7 +28,7 @@ export default class AddAdventureForm extends Component {
   }
 
   handleSubmit() {
-    //this.setState
+    alert(this.state);
   }
 
   render() {
@@ -120,7 +122,7 @@ export default class AddAdventureForm extends Component {
         className='formItem'
         type='submit'
         value='Add Adventure!'
-        onChange={()=>console.log('Select pressed')}
+        onChange={this.handleSubmit}
       />
     </form>
     );

@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+//const cors = require('cors');
 
 const app = express();
 
@@ -82,16 +82,14 @@ const adventures = [
 
 //Middleware:
 app.use(bodyParser.json());
-//app.use(cors());
 
 
 //Endpoints
-// app.get('/adventures', (req, res) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.status(200).send(adventures);
-// });
+app.get('/api/adventures', (req, res) => {
+  res.status(200).send(adventures);
+});
 
 //Listen
-const port = process.env.PORT || 4040;
-app.listen(port);
+// const port = process.env.PORT || 4040;
+app.listen(3000);
 console.log('Listening on port ' + port);
