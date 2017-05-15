@@ -30,7 +30,7 @@ export default class Adventures extends Component {
           selectedCategory={this.state.selectedCategory}
         />
         <ListContainer
-          adventures={this.state.adventureData}
+          adventures={this.state.adventures}
           category={this.state.selectedCategory}
         />
       </div>
