@@ -10,7 +10,7 @@ export default class AdventureInfo extends Component {
   render() {
     return (
       <div>
-        Adventure Info!!!
+        Adventure: {this.props.adventure.title}
       </div>
     );
   }

@@ -3,6 +3,7 @@ import CategoriesBar from './CategoriesBar';
 import ListContainer from './ListContainer';
 import api from '../utils/api';
 import adventureData from '../data/adventureData';
+import AdventureInfo from './AdventureInfo';
 
 export default class Adventures extends Component {
   constructor (props) {
@@ -29,18 +30,26 @@ export default class Adventures extends Component {
   }
 
   render() {
-    return (
-      <div className='categoriesContainer'>
-        <CategoriesBar
-          onSelect={this.changeCategory}
-          selectedCategory={this.state.selectedCategory}
-        />
-        <ListContainer
-          adventures={this.state.adventures}
-          category={this.state.selectedCategory}
-          changeAdventure={this.changeAdventure}
-        />
-      </div>
-    );
+    if (this.state.currentAdventure === null) {
+      return (
+        <div className='categoriesContainer'>
+          <CategoriesBar
+            onSelect={this.changeCategory}
+            selectedCategory={this.state.selectedCategory}
+          />
+          <ListContainer
+            adventures={this.state.adventures}
+            category={this.state.selectedCategory}
+            changeAdventure={this.changeAdventure}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className='categoriesContainer'>
+          <AdventureInfo adventure={this.state.currentAdventure} />
+        </div>
+      );
+    }
   }
 }
