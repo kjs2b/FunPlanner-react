@@ -14,7 +14,11 @@ export default class ListContainer extends Component {
     return (
       <div className='listContainer'>
         {listedAdventures.map((adv) =>
-            <ListItem item={adv} key={adv.title} />
+            <ListItem
+              item={adv}
+              key={adv.title}
+              onSelect={this.props.changeAdventure}
+            />
         )}
       </div>
     );

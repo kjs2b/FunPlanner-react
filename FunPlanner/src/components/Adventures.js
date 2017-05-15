@@ -9,9 +9,11 @@ export default class Adventures extends Component {
     super(props);
     this.state = {
       selectedCategory: 'All',
-      adventures: adventureData
+      adventures: adventureData,
+      currentAdventure: null
     };
     this.changeCategory = this.changeCategory.bind(this);
+    this.changeAdventure = this.changeAdventure.bind(this);
   }
 
   componentDidMount () {
@@ -20,6 +22,10 @@ export default class Adventures extends Component {
 
   changeCategory(cat) {
     this.setState({ selectedCategory: cat });
+  }
+
+  changeAdventure(adv) {
+    this.setState({ currentAdventure: adv });
   }
 
   render() {
@@ -32,6 +38,7 @@ export default class Adventures extends Component {
         <ListContainer
           adventures={this.state.adventures}
           category={this.state.selectedCategory}
+          changeAdventure={this.changeAdventure}
         />
       </div>
     );
