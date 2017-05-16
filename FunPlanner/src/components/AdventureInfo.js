@@ -26,6 +26,7 @@ export default class AdventureInfo extends Component {
         <img
           src={this.findIcon()}
           className='adventureIcon'
+          alt='Category icon'
         />
         <br />
         <a href={this.props.adventure.link}>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import CategoriesBar from './CategoriesBar';
 import ListContainer from './ListContainer';
-import api from '../utils/api';
-import adventureData from '../data/adventureData';
+//import api from '../utils/api';
+import axios from 'axios';
+//import adventureData from '../data/adventureData';
 import AdventureInfo from './AdventureInfo';
 
 export default class Adventures extends Component {
@@ -10,7 +11,7 @@ export default class Adventures extends Component {
     super(props);
     this.state = {
       selectedCategory: 'All',
-      adventures: adventureData,
+      adventures: [],
       currentAdventure: null
     };
     this.changeCategory = this.changeCategory.bind(this);
@@ -18,7 +19,9 @@ export default class Adventures extends Component {
   }
 
   componentDidMount () {
-    api.fetchAdventures();
+    axios.get('/api/adventures').then((res) => {
+      this.setState({ adventures: res.data });
+    });
   }
 
   changeCategory(cat) {
