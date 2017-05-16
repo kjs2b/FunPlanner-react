@@ -80,3 +80,8 @@ a {
 .nav li {
   margin-right: 15px;
 }
+
+.adventureIcon {
+  height: 150px;
+  width:150px;
+}
