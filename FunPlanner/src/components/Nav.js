@@ -10,12 +10,7 @@ const Nav = () => (
     </li>
     <li>
       <NavLink activeClassName='active' to='/list'>
-        List
-      </NavLink>
-    </li>
-    <li>
-      <NavLink activeClassName='active' to='/map'>
-        Map
+        View Adventures
       </NavLink>
     </li>
   </ul>
