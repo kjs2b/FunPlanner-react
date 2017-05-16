@@ -22,11 +22,16 @@ export default class AdventureInfo extends Component {
       <div>
         <h2>{this.props.adventure.title}</h2>
         <h4>{this.props.adventure.location}</h4>
-        <h6>{this.props.adventure.category}</h6>
+        <h6>Priority: {this.props.adventure.priority}</h6>
         <img
           src={this.findIcon()}
           className='adventureIcon'
         />
+        <br />
+        <a href={this.props.adventure.link}>
+          {this.props.adventure.link}
+        </a>
+        <p>Notes: {this.props.adventure.notes}</p>
       </div>
     );
   }
