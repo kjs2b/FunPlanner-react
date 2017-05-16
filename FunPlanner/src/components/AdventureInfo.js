@@ -19,7 +19,7 @@ export default class AdventureInfo extends Component {
 
   render() {
     return (
-      <div>
+      <div className='adventureInfo'>
         <h2>{this.props.adventure.title}</h2>
         <h4>{this.props.adventure.location}</h4>
         <h6>Priority: {this.props.adventure.priority}</h6>

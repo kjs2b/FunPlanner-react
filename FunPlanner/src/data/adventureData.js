@@ -31,7 +31,7 @@ const adventureData = [
     addedBy: 'Kevin',
     location: 'North of Portland',
     category: 'Hikes',
-    notes: 'Ok, not exatly a hike',
+    notes: 'Ok, not exactly a hike',
     priority: 3,
     link: null
   },

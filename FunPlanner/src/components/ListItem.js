@@ -6,8 +6,8 @@ export default function ListItem (props) {
       className='listItem'
       onClick={props.onSelect.bind(null, props.item)}
     >
-      <h3>{props.item.title}</h3>
-      <p>{props.item.location}</p>
+      <h5>{props.item.title}</h5>
+      <h6>{props.item.location}</h6>
     </div>
   );
 }

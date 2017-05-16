@@ -46,8 +46,21 @@ export default class Adventures extends Component {
       );
     } else {
       return (
-        <div className='categoriesContainer'>
-          <AdventureInfo adventure={this.state.currentAdventure} />
+        <div className='adventures'>
+          <div className='categoriesContainer'>
+            <CategoriesBar
+              onSelect={this.changeCategory}
+              selectedCategory={this.state.selectedCategory}
+            />
+            <ListContainer
+              adventures={this.state.adventures}
+              category={this.state.selectedCategory}
+              changeAdventure={this.changeAdventure}
+            />
+          </div>
+          <div className='adventureInfo'>
+            <AdventureInfo adventure={this.state.currentAdventure} />
+          </div>
         </div>
       );
     }
