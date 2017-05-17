@@ -19,8 +19,12 @@ export default class Adventures extends Component {
   }
 
   componentDidMount () {
-    axios.get('/api/adventures').then((res) => {
+    axios.get('/api/adventuresDB').then((res) => {
       this.setState({ adventures: res.data });
+    });
+    console.log('Between api calls');
+    axios.get('/api/adventuresDB').then((res) => {
+      console.log('Response', res.data);
     });
   }
 
