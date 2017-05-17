@@ -89,7 +89,8 @@ const adventureData = [
   }
 ];
 
-db
+
+//db
 db.serialize(() => {
   db.run("CREATE TABLE IF NOT EXISTS adventures (" +
     "id INT NOT NULL, " +
@@ -104,18 +105,23 @@ db.serialize(() => {
     "PRIMARY KEY (id))");
 });
 
-//db.run("INSERT INTO adventures VALUES (1, 'Chicken & Guns', 'Restaurants', 'Cartopia', '', 'medium', 'notes here', '12/04/2011 12:00:00 AM', 'Kevin')");
+db.run("INSERT INTO adventures VALUES (7, 'Chicken & Guns', 'Restaurants', 'Cartopia', '', 'medium', 'notes here', '12/04/2011 12:00:00 AM', 'Kevin')");
 
 db.all("SELECT * FROM adventures", (err, row) => {
     console.log('Results: ' + row.toString())
 });
 
-db.close();
 
 
 //routes
 app.get('/api/adventures', (req, res) => {
   res.status(200).send(adventureData);
+});
+
+app.get('/api/adventuresDB', (req, res) => {
+  db.all("SELECT * FROM adventures", (err, row) => {
+    res.status(200).send(row);
+  });
 });
 
 
