@@ -1,6 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+//db
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./funplanner_db.db');
+
+
 const app = express();
 
 
@@ -83,6 +88,29 @@ const adventureData = [
     link: 'http://southparkseafood.com/'
   }
 ];
+
+db
+db.serialize(() => {
+  db.run("CREATE TABLE IF NOT EXISTS adventures (" +
+    "id INT NOT NULL, " +
+    "title VARCHAR(255), " +
+    "category VARCHAR(255), " +
+    "location VARCHAR(255), " +
+    "link VARCHAR(255), " +
+    "priority VARCHAR(255), " +
+    "notes TEXT, " +
+    "date_posted DATETIME, " +
+    "posted_by VARCHAR(255), " +
+    "PRIMARY KEY (id))");
+});
+
+//db.run("INSERT INTO adventures VALUES (1, 'Chicken & Guns', 'Restaurants', 'Cartopia', '', 'medium', 'notes here', '12/04/2011 12:00:00 AM', 'Kevin')");
+
+db.all("SELECT * FROM adventures", (err, row) => {
+    console.log('Results: ' + row.toString())
+});
+
+db.close();
 
 
 //routes
