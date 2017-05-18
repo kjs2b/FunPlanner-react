@@ -114,15 +114,22 @@ db.all("SELECT * FROM adventures", (err, row) => {
 
 
 //routes
-app.get('/api/adventures', (req, res) => {
-  res.status(200).send(adventureData);
-});
+// app.get('/api/adventures', (req, res) => {
+//   res.status(200).send(adventureData);
+// });
 
-app.get('/api/adventuresDB', (req, res) => {
+app.get('/api/adventures', (req, res) => {
   db.all("SELECT * FROM adventures", (err, row) => {
     res.status(200).send(row);
   });
 });
+
+app.post('/api/adventures', (req, res) => {
+  const stmt = db.prepare('INSERT INTO adventures VALUES (?,?,?,?,?,?,?,?,?,?)');
+  stmt.run(req.body);
+  stmt.finalize();
+}
+
 
 
 //listen
