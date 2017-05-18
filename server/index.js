@@ -91,9 +91,11 @@ const adventureData = [
 
 
 //db
+//db.run('DROP TABLE adventures');
+
 db.serialize(() => {
   db.run("CREATE TABLE IF NOT EXISTS adventures (" +
-    "id INT NOT NULL, " +
+    "id INTEGER PRIMARY KEY, " +
     "title VARCHAR(255), " +
     "category VARCHAR(255), " +
     "location VARCHAR(255), " +
@@ -101,11 +103,10 @@ db.serialize(() => {
     "priority VARCHAR(255), " +
     "notes TEXT, " +
     "date_posted DATETIME, " +
-    "posted_by VARCHAR(255), " +
-    "PRIMARY KEY (id))");
+    "posted_by VARCHAR(255))")
 });
 
-// db.run("INSERT INTO adventures VALUES (7, 'Chicken & Guns', 'Restaurants', 'Cartopia', '', 'medium', 'notes here', '12/04/2011 12:00:00 AM', 'Kevin')");
+db.run("INSERT INTO adventures (title, category, location, link, priority, notes, date_posted, posted_by) VALUES ('Chicken & Guns', 'Restaurants', 'Cartopia', '', 'medium', 'notes here', '12/04/2011 12:00:00 AM', 'Kevin')");
 
 // db.all("SELECT * FROM adventures", (err, row) => {
 //     console.log('Results: ' + row.toString())
@@ -126,9 +127,20 @@ app.get('/api/adventures', (req, res) => {
 
 app.post('/api/adventures', (req, res) => {
   console.log(req.body);
-  //const stmt = db.prepare('INSERT INTO adventures VALUES (?,?,?,?,?,?,?,?,?,?)');
-  //stmt.run(req.body);
-  //stmt.finalize();
+  const stmt = db.prepare('INSERT INTO adventures VALUES (?,?,?,?,?,?,?,?,?)');
+  const values = [
+    'NULL',
+    req.body.title,
+    req.body.category,
+    req.body.location,
+    req.body.link,
+    req.body.priority,
+    req.body.notes,
+    'NULL',
+    'NULL'
+  ];
+  stmt.run(values);
+  stmt.finalize();
 });
 
 
