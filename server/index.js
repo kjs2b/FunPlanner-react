@@ -106,7 +106,7 @@ db.serialize(() => {
     "posted_by VARCHAR(255))")
 });
 
-db.run("INSERT INTO adventures (title, category, location, link, priority, notes, date_posted, posted_by) VALUES ('Chicken & Guns', 'Restaurants', 'Cartopia', '', 'medium', 'notes here', '12/04/2011 12:00:00 AM', 'Kevin')");
+//db.run("INSERT INTO adventures (title, category, location, link, priority, notes, date_posted, posted_by) VALUES ('Chicken & Guns', 'Restaurants', 'Cartopia', '', 'medium', 'notes here', '12/04/2011 12:00:00 AM', 'Kevin')");
 
 // db.all("SELECT * FROM adventures", (err, row) => {
 //     console.log('Results: ' + row.toString())
@@ -127,9 +127,10 @@ app.get('/api/adventures', (req, res) => {
 
 app.post('/api/adventures', (req, res) => {
   console.log(req.body);
-  const stmt = db.prepare('INSERT INTO adventures VALUES (?,?,?,?,?,?,?,?,?)');
+  const stmt = db.prepare("INSERT INTO adventures " + 
+    "(title, category, location, link, priority, notes, date_posted, posted_by) " +
+    "VALUES (?,?,?,?,?,?,?,?)");
   const values = [
-    'NULL',
     req.body.title,
     req.body.category,
     req.body.location,
