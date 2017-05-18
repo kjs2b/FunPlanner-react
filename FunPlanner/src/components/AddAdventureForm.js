@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 
 export default class AddAdventureForm extends Component {
   constructor(props) {
@@ -27,8 +27,13 @@ export default class AddAdventureForm extends Component {
     });
   }
 
-  handleSubmit() {
-    alert(this.state);
+  handleSubmit(event) {
+    event.preventDefault();
+    axios.post('/api/adventures', this.state)
+      .then(res => {
+        console.log('Response: ', res);
+        console.log(this.state);
+      });
   }
 
   render() {
@@ -118,12 +123,12 @@ export default class AddAdventureForm extends Component {
           onChange={this.handleChange}
         />
       </div>
-      <input
+      <button
         className='formItem'
-        type='submit'
-        value='Add Adventure!'
-        onChange={this.handleSubmit}
-      />
+        onClick={this.handleSubmit}
+      >
+        Add Adventure!
+      </button>
     </form>
     );
   }

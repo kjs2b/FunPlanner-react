@@ -105,11 +105,11 @@ db.serialize(() => {
     "PRIMARY KEY (id))");
 });
 
-db.run("INSERT INTO adventures VALUES (7, 'Chicken & Guns', 'Restaurants', 'Cartopia', '', 'medium', 'notes here', '12/04/2011 12:00:00 AM', 'Kevin')");
+// db.run("INSERT INTO adventures VALUES (7, 'Chicken & Guns', 'Restaurants', 'Cartopia', '', 'medium', 'notes here', '12/04/2011 12:00:00 AM', 'Kevin')");
 
-db.all("SELECT * FROM adventures", (err, row) => {
-    console.log('Results: ' + row.toString())
-});
+// db.all("SELECT * FROM adventures", (err, row) => {
+//     console.log('Results: ' + row.toString())
+// });
 
 
 
@@ -125,10 +125,11 @@ app.get('/api/adventures', (req, res) => {
 });
 
 app.post('/api/adventures', (req, res) => {
-  const stmt = db.prepare('INSERT INTO adventures VALUES (?,?,?,?,?,?,?,?,?,?)');
-  stmt.run(req.body);
-  stmt.finalize();
-}
+  console.log(req.body);
+  //const stmt = db.prepare('INSERT INTO adventures VALUES (?,?,?,?,?,?,?,?,?,?)');
+  //stmt.run(req.body);
+  //stmt.finalize();
+});
 
 
 
