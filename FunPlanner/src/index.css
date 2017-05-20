@@ -36,6 +36,10 @@ a {
   margin: 30px;
 }
 
+.editDeleteButton {
+  margin-right: 15px;
+}
+
 .formItem {
   margin-top: 15px;
 }
