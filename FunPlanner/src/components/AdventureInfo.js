@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 //const icon = require('../../public/icons/Hikes.png');
 
 export default class AdventureInfo extends Component {
@@ -25,6 +26,9 @@ export default class AdventureInfo extends Component {
 
   handleDelete() {
     console.log('Delete');
+    axios.delete('/api/adventures/' + this.props.adventure.id).then(res => {
+      console.log('Deleted!');
+    });
   }
 
 
