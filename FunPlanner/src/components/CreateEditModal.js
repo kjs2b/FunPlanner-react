@@ -16,6 +16,10 @@ export default class CreateEditModal extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillMount() {
+    console.log(this.props);
+  }
+
   handleChange(event) {
     const value = event.target.value;
     const id = event.target.id;

@@ -24,7 +24,7 @@ class App extends Component {
         <div className='container'>
           <Nav />
           <Switch>
-            <Route exact path='/' component={CreateEditModal} />
+            <Route exact path='/' component={AddAdventureContainer} />
             <Route path='/list' component={Adventures} />
             <Route render={() => <p>Not Found</p>} />
           </Switch>

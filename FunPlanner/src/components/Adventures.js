@@ -3,7 +3,6 @@ import CategoriesBar from './CategoriesBar';
 import ListContainer from './ListContainer';
 //import api from '../utils/api';
 import axios from 'axios';
-//import adventureData from '../data/adventureData';
 import AdventureInfo from './AdventureInfo';
 import Modal from 'react-modal';
 import CreateEditModal from './CreateEditModal';
@@ -32,6 +31,7 @@ export default class Adventures extends Component {
   getAdventures() {
     axios.get('/api/adventures').then((res) => {
       this.setState({ adventures: res.data });
+      console.log(this.state);
     });
   }
 
