@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
 
 export default class CreateEditModal extends Component {
   constructor (props) {
@@ -11,9 +10,11 @@ export default class CreateEditModal extends Component {
       location: this.props.adventure.location,
       link: this.props.adventure.link,
       priority: this.props.adventure.priority,
-      notes: this.props.adventure.notes
+      notes: this.props.adventure.notes,
+      id: this.props.adventure.id
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleEditSubmission = this.handleEditSubmission.bind(this);
   }
 
   componentWillMount() {
@@ -120,12 +121,20 @@ export default class CreateEditModal extends Component {
           onChange={this.handleChange}
         />
       </div>
-      <button
-        className='formItem'
-        onClick={this.handleEditSubmission.bind(this)}
-      >
-        Submit changes
-      </button>
+      <div>
+        <button
+          className='formItem'
+          onClick={this.handleEditSubmission}
+        >
+          Submit changes
+        </button>
+        <button
+          className='formItem'
+          onClick={this.props.closeModal}
+        >
+          Cancel
+        </button>
+      </div>
     </form>
     );
   }

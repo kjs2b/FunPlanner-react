@@ -28,10 +28,14 @@ export default class Adventures extends Component {
     this.getAdventures();
   }
 
-  getAdventures() {
+  getAdventures(currAdvID) {
     axios.get('/api/adventures').then((res) => {
       this.setState({ adventures: res.data });
-      console.log(this.state);
+      if(currAdvID !== undefined) {
+        console.log('getAdventures : ', currAdvID)
+        const currAdvArray = this.state.adventures.filter(adv => adv.id === currAdvID);
+        this.setState({ currentAdventure: currAdvArray[0] });
+      }
     });
   }
 
@@ -53,17 +57,16 @@ export default class Adventures extends Component {
 
   deleteAdventure() {
     axios.delete('/api/adventures/' + this.state.currentAdventure.id).then(res => {
-      this.setState({ currentAdventure: null })
+      //this.setState({ currentAdventure: null })
       this.getAdventures();
     });
   }
 
   editAdventure(adventureUpdates) {
-    console.log('Edit Adventure');
     axios.post('/api/adventures/' + this.state.currentAdventure.id, adventureUpdates).then(res => {
-      this.getAdventures();
-      //reset currentAdventure to the one that was just edited
-    })
+      console.log('AdventureUpdates: ', adventureUpdates.id);
+      //this.getAdventures(adventureUpdates.id);
+    });
   }
 
   render() {
@@ -110,6 +113,7 @@ export default class Adventures extends Component {
             <CreateEditModal 
               adventure={this.state.currentAdventure}
               submitChanges={this.editAdventure}
+              closeModal={this.closeModal}
             />
           </Modal>
         </div>

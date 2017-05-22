@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-//const icon = require('../../public/icons/Hikes.png');
 
 export default class AdventureInfo extends Component {
   constructor(props) {
