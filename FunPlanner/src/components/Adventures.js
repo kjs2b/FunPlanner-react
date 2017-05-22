@@ -39,6 +39,7 @@ export default class Adventures extends Component {
 
   deleteAdventure() {
     axios.delete('/api/adventures/' + this.state.currentAdventure.id).then(res => {
+      this.setState({ currentAdventure: null })
       this.getAdventures();
     });
   }
