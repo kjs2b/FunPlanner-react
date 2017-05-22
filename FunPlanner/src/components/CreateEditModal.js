@@ -4,16 +4,25 @@ import Modal from 'react-modal';
 export default class CreateEditModal extends Component {
   constructor (props) {
     super(props);
+
     this.state = {
-      adv: {
-        title: this.props.adventure.title,
-        category: this.props.adventure.category,
-        location: this.props.adventure.location,
-        link: this.props.adventure.link,
-        priority: this.props.adventure.priority,
-        notes: this.props.adventure.notes
-      }
+      title: this.props.adventure.title,
+      category: this.props.adventure.category,
+      location: this.props.adventure.location,
+      link: this.props.adventure.link,
+      priority: this.props.adventure.priority,
+      notes: this.props.adventure.notes
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    const value = event.target.value;
+    const id = event.target.id;
+
+    this.setState({
+      [id]: value
+    });
   }
 
   render() {
@@ -28,7 +37,7 @@ export default class CreateEditModal extends Component {
           placeholder='Adventure Title'
           type='text'
           autoComplete='off'
-          value={this.state.adv.title}
+          value={this.state.title}
           onChange={this.handleChange}
         />
       </div>
@@ -38,7 +47,7 @@ export default class CreateEditModal extends Component {
         </label>
         <select
           id='category'
-          value={this.state.adv.category}
+          value={this.state.category}
           onChange={this.handleChange}
         >
           <option value='Hikes'>Hikes</option>
@@ -57,7 +66,7 @@ export default class CreateEditModal extends Component {
           placeholder='e.g., Inner SE'
           type='text'
           autoComplete='off'
-          value={this.state.adv.location}
+          value={this.state.location}
           onChange={this.handleChange}
         />
       </div>
@@ -70,7 +79,7 @@ export default class CreateEditModal extends Component {
           placeholder='Link to site'
           type='text'
           autoComplete='off'
-          value={this.state.adv.link}
+          value={this.state.link}
           onChange={this.handleChange}
         />
       </div>
@@ -80,7 +89,7 @@ export default class CreateEditModal extends Component {
         </label>
         <select
           id='priority'
-          value={this.state.adv.priority}
+          value={this.state.priority}
           onChange={this.handleChange}
         >
           <option value='High'>High</option>
@@ -99,15 +108,15 @@ export default class CreateEditModal extends Component {
           placeholder='Notes...'
           type='text'
           autoComplete='off'
-          value={this.state.adv.notes}
+          value={this.state.notes}
           onChange={this.handleChange}
         />
       </div>
       <button
         className='formItem'
-        onClick={this.handleSubmit}
+        onClick={this.props.submitChanges}
       >
-        Add Adventure!
+        Submit changes
       </button>
     </form>
     );

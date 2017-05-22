@@ -143,13 +143,18 @@ app.post('/api/adventures', (req, res) => {
   stmt.finalize();
 });
 
+app.post('/api/adventures/:adventureID', (req, res) => {
+  const adventureID = parseInt(req.params.adventureID);
+  console.log('Edit adventure where ID = ' + adventureID);
+  res.status(200).send();
+})
+
 app.delete('/api/adventures/:adventureID', (req, res) => {
   const adventureID = parseInt(req.params.adventureID);
   console.log('Delete where ID = ' + adventureID);
   db.run("DELETE FROM adventures WHERE id=" + adventureID + ";", (err, row) => {
     res.status(200).send();
   })
-  // res.status(200).send();
 });
 
 

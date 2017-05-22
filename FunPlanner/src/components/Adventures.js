@@ -20,6 +20,7 @@ export default class Adventures extends Component {
     this.changeCategory = this.changeCategory.bind(this);
     this.changeAdventure = this.changeAdventure.bind(this);
     this.deleteAdventure = this.deleteAdventure.bind(this);
+    this.editAdventure = this.editAdventure.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -55,6 +56,14 @@ export default class Adventures extends Component {
       this.setState({ currentAdventure: null })
       this.getAdventures();
     });
+  }
+
+  editAdventure() {
+    console.log('Edit Adventure');
+    axios.post('/api/adventures/' + this.state.currentAdventure.id).then(res => {
+      this.getAdventures();
+      //reset currentAdventure to the one that was just edited
+    })
   }
 
   render() {
@@ -98,7 +107,10 @@ export default class Adventures extends Component {
             contentLabel='Create & Edit Modal'
           >
             <center><h2>Edit Adventure</h2></center>
-            <CreateEditModal adventure={this.state.currentAdventure}/>
+            <CreateEditModal 
+              adventure={this.state.currentAdventure}
+              submitChanges={this.editAdventure}
+            />
           </Modal>
         </div>
       );
