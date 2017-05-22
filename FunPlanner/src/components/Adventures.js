@@ -70,53 +70,40 @@ export default class Adventures extends Component {
   }
 
   render() {
-    // if (this.state.currentAdventure === null) {
-    //   return (
-    //     <div className='categoriesContainer'>
-    //       <CategoriesBar
-    //         onSelect={this.changeCategory}
-    //         selectedCategory={this.state.selectedCategory}
-    //       />
-    //       <ListContainer
-    //         adventures={this.state.adventures}
-    //         category={this.state.selectedCategory}
-    //         changeAdventure={this.changeAdventure}
-    //       />
-    //     </div>
-    //   );
-    // } else {
-      return (
-        <div className='adventures'>
-          <div className='categoriesContainer'>
-            <CategoriesBar
-              onSelect={this.changeCategory}
-              selectedCategory={this.state.selectedCategory}
-            />
-            <ListContainer
-              adventures={this.state.adventures}
-              category={this.state.selectedCategory}
-              changeAdventure={this.changeAdventure}
-            />
-          </div>
-          <div className='adventureInfo'>
-            <AdventureInfo
-              adventure={this.state.currentAdventure}
-              deleteAdventure={this.deleteAdventure}
-              openModal={this.openModal}
-            />
-          </div>
-          <Modal
-            isOpen={this.state.modalIsOpen}
-            contentLabel='Create & Edit Modal'
-          >
-            <center><h2>Edit Adventure</h2></center>
-            <CreateEditModal 
-              adventure={this.state.currentAdventure}
-              submitChanges={this.editAdventure}
-              closeModal={this.closeModal}
-            />
-          </Modal>
+    return (
+      <div className='adventures'>
+        <div className='categoriesContainer'>
+          <CategoriesBar
+            onSelect={this.changeCategory}
+            selectedCategory={this.state.selectedCategory}
+          />
+          <ListContainer
+            adventures={this.state.adventures}
+            category={this.state.selectedCategory}
+            selectedAdventure={this.state.currentAdventure}
+            changeAdventure={this.changeAdventure}
+          />
         </div>
-      );
+        <div className='adventureInfo'>
+          <AdventureInfo
+            adventure={this.state.currentAdventure}
+            deleteAdventure={this.deleteAdventure}
+            openModal={this.openModal}
+          />
+        </div>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          contentLabel='Create & Edit Modal'
+        >
+          <center><h2>Edit Adventure</h2></center>
+          <CreateEditModal 
+            adventure={this.state.currentAdventure}
+            submitChanges={this.editAdventure}
+            closeModal={this.closeModal}
+            formType={this.state.currentAdventure ? 'edit' : 'new'}
+          />
+        </Modal>
+      </div>
+    );
   }
 }

@@ -4,17 +4,28 @@ export default class CreateEditModal extends Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      title: this.props.adventure.title,
-      category: this.props.adventure.category,
-      location: this.props.adventure.location,
-      link: this.props.adventure.link,
-      priority: this.props.adventure.priority,
-      notes: this.props.adventure.notes,
-      id: this.props.adventure.id
-    };
+    if(this.props.formType === 'edit') {
+      this.state = {
+        title: this.props.adventure.title,
+        category: this.props.adventure.category,
+        location: this.props.adventure.location,
+        link: this.props.adventure.link,
+        priority: this.props.adventure.priority,
+        notes: this.props.adventure.notes,
+        id: this.props.adventure.id
+      };
+    } else {
+      this.state = {
+        title: '',
+        category: '',
+        location: '',
+        link: '',
+        priority: '',
+        notes: '',
+      };
+    }
     this.handleChange = this.handleChange.bind(this)
-    this.handleEditSubmission = this.handleEditSubmission.bind(this);
+    this.handleSubmission = this.handleSubmission.bind(this);
   }
 
   handleChange(event) {
@@ -26,7 +37,7 @@ export default class CreateEditModal extends Component {
     });
   }
 
-  handleEditSubmission() {
+  handleSubmission() {
     this.props.submitChanges(this.state);
   }
 
@@ -55,6 +66,7 @@ export default class CreateEditModal extends Component {
           value={this.state.category}
           onChange={this.handleChange}
         >
+          <option disabled value=''>Choose one</option>
           <option value='Hikes'>Hikes</option>
           <option value='Restaurants'>Restaurants</option>
           <option value='Events'>Events</option>
@@ -120,9 +132,9 @@ export default class CreateEditModal extends Component {
       <div>
         <button
           className='formItem'
-          onClick={this.handleEditSubmission}
+          onClick={this.handleSubmission}
         >
-          Submit changes
+          {this.props.formType === 'edit' ? 'Save changes' : 'Save new adventure'}
         </button>
         <button
           className='formItem'
