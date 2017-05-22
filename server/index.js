@@ -148,17 +148,20 @@ app.post('/api/adventures/:adventureID', (req, res) => {
   const adventure = req.body;
   console.log('Edit adventure where ID = ' + adventureID);
   console.log(req.body);
-  db.run("UPDATE adventures " + 
-    "SET title = " + req.body.title + ", cateogory = " + req.body.category +
-        ", location = " + req.body.location + ", link = " + req.body.link +
-        ", priority = " + req.body.priority + ", notes = " + req.body.notes + " " + 
-    "WHERE id = " + adventureID + ";", (err, row) => {
-        console.log('row: ', row);
-        res.status(200).send();
-  });
-  // db.run("UPDATE adventures SET title = :title, category = :category, location = :locaation, " + 
-  //   "link = :link, priority = :priority, notes = :notes " + 
-  //   "WHERE id = " + adventureID, adventure);
+  // db.run("UPDATE adventures " + 
+  //   "SET title = " + req.body.title + ", cateogory = " + req.body.category +
+  //       ", location = " + req.body.location + ", link = " + req.body.link +
+  //       ", priority = " + req.body.priority + ", notes = " + req.body.notes + " " + 
+  //   "WHERE id = " + adventureID + ";", (err, row) => {
+  //       console.log('row: ', row);
+  //       res.status(200).send();
+  // });
+  db.run("UPDATE adventures SET title = ?, category = ?, location = ?, " + 
+    "link = ?, priority = ?, notes = ? " + 
+    "WHERE id = " + adventureID,
+    [req.body.title, req.body.category, req.body.location, req.body.link, req.body.priority,
+        req.body.notes
+    ]);
 })
 
 app.delete('/api/adventures/:adventureID', (req, res) => {
