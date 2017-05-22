@@ -97,7 +97,8 @@ export default class Adventures extends Component {
             isOpen={this.state.modalIsOpen}
             contentLabel='Create & Edit Modal'
           >
-            <CreateEditModal />
+            <center><h2>Edit Adventure</h2></center>
+            <CreateEditModal adventure={this.state.currentAdventure}/>
           </Modal>
         </div>
       );
