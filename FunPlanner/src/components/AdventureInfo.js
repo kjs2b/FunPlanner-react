@@ -23,38 +23,44 @@ export default class AdventureInfo extends Component {
   }
 
   render() {
-    return (
-      <div className='adventureInfo'>
-        <h2>{this.props.adventure.title}</h2>
-        <h4>{this.props.adventure.location}</h4>
-        <h6>Priority: {this.props.adventure.priority}</h6>
-        <img
-          src={this.findIcon()}
-          className='adventureIcon'
-          alt='Category icon'
-        />
-        <br />
-        <a href={this.props.adventure.link}>
-          {this.props.adventure.link}
-        </a>
-        <p>Notes: {this.props.adventure.notes}</p>
-        <div className='editButtonsConatainer'>
-          <button
-            type='button'
-            className='editDeleteButton'
-            onClick={this.handleEdit}
-          >
-            Edit
-          </button>
-          <button
-            type='button'
-            className='editDeleteButton'
-            onClick={this.props.deleteAdventure}
-          >
-            Delete
-          </button>
+    if(this.props.adventure) {
+      return (
+        <div className='adventureInfo'>
+          <h2>{this.props.adventure.title}</h2>
+          <h4>{this.props.adventure.location}</h4>
+          <h6>Priority: {this.props.adventure.priority}</h6>
+          <img
+            src={this.findIcon()}
+            className='adventureIcon'
+            alt='Category icon'
+          />
+          <br />
+          <a href={this.props.adventure.link}>
+            {this.props.adventure.link}
+          </a>
+          <p>Notes: {this.props.adventure.notes}</p>
+          <div className='editButtonsConatainer'>
+            <button
+              type='button'
+              className='editDeleteButton'
+              onClick={this.handleEdit}
+            >
+              Edit
+            </button>
+            <button
+              type='button'
+              className='editDeleteButton'
+              onClick={this.props.deleteAdventure}
+            >
+              Delete
+            </button>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <h3>Select an adventure from list or click below to create a new one</h3>
+      );
+    }
   }
 }

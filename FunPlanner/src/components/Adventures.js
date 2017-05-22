@@ -32,9 +32,9 @@ export default class Adventures extends Component {
     axios.get('/api/adventures').then((res) => {
       this.setState({ adventures: res.data });
       if(currAdvID !== undefined) {
-        console.log('getAdventures : ', currAdvID)
-        const currAdvArray = this.state.adventures.filter(adv => adv.id === currAdvID);
-        this.setState({ currentAdventure: currAdvArray[0] });
+        //Trying to keep the current (displayed) adventure the same after editing!!
+        //currAdv = this.state.adventures.filter(adv => adv.id === currAdvID);
+        // this.setState({ currentAdventure: currAdvArray[0] });
       }
     });
   }
@@ -70,21 +70,21 @@ export default class Adventures extends Component {
   }
 
   render() {
-    if (this.state.currentAdventure === null) {
-      return (
-        <div className='categoriesContainer'>
-          <CategoriesBar
-            onSelect={this.changeCategory}
-            selectedCategory={this.state.selectedCategory}
-          />
-          <ListContainer
-            adventures={this.state.adventures}
-            category={this.state.selectedCategory}
-            changeAdventure={this.changeAdventure}
-          />
-        </div>
-      );
-    } else {
+    // if (this.state.currentAdventure === null) {
+    //   return (
+    //     <div className='categoriesContainer'>
+    //       <CategoriesBar
+    //         onSelect={this.changeCategory}
+    //         selectedCategory={this.state.selectedCategory}
+    //       />
+    //       <ListContainer
+    //         adventures={this.state.adventures}
+    //         category={this.state.selectedCategory}
+    //         changeAdventure={this.changeAdventure}
+    //       />
+    //     </div>
+    //   );
+    // } else {
       return (
         <div className='adventures'>
           <div className='categoriesContainer'>
@@ -118,6 +118,5 @@ export default class Adventures extends Component {
           </Modal>
         </div>
       );
-    }
   }
 }
