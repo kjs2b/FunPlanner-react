@@ -21,6 +21,7 @@ export default class AdventureInfo extends Component {
 
   handleEdit() {
     console.log("edit");
+    this.props.openModal();
   }
 
   render() {

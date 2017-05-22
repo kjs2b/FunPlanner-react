@@ -6,6 +6,7 @@ import Adventures from './components/Adventures';
 import Nav from './components/Nav';
 import AddAdventureContainer from './components/AddAdventureContainer';
 import Login from './components/Login';
+import CreateEditModal from './components/CreateEditModal';
 
 
 const auth = new AuthService('v9P8Ehko9qtNgpFuEY-uYrmrr8puOyOy', 'kjs2b.auth0.com');
@@ -23,7 +24,7 @@ class App extends Component {
         <div className='container'>
           <Nav />
           <Switch>
-            <Route exact path='/' component={AddAdventureContainer} />
+            <Route exact path='/' component={CreateEditModal} />
             <Route path='/list' component={Adventures} />
             <Route render={() => <p>Not Found</p>} />
           </Switch>

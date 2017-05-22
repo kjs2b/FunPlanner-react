@@ -5,6 +5,8 @@ import ListContainer from './ListContainer';
 import axios from 'axios';
 //import adventureData from '../data/adventureData';
 import AdventureInfo from './AdventureInfo';
+import Modal from 'react-modal';
+import CreateEditModal from './CreateEditModal';
 
 export default class Adventures extends Component {
   constructor (props) {
@@ -12,11 +14,14 @@ export default class Adventures extends Component {
     this.state = {
       selectedCategory: 'All',
       adventures: [],
-      currentAdventure: null
+      currentAdventure: null,
+      modalIsOpen: false
     };
     this.changeCategory = this.changeCategory.bind(this);
     this.changeAdventure = this.changeAdventure.bind(this);
     this.deleteAdventure = this.deleteAdventure.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount () {
@@ -27,6 +32,14 @@ export default class Adventures extends Component {
     axios.get('/api/adventures').then((res) => {
       this.setState({ adventures: res.data });
     });
+  }
+
+  openModal() {
+    this.setState({ modalIsOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
   }
 
   changeCategory(cat) {
@@ -77,8 +90,15 @@ export default class Adventures extends Component {
             <AdventureInfo
               adventure={this.state.currentAdventure}
               deleteAdventure={this.deleteAdventure}
+              openModal={this.openModal}
             />
           </div>
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            contentLabel='Create & Edit Modal'
+          >
+            <CreateEditModal />
+          </Modal>
         </div>
       );
     }
