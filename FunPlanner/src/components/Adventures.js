@@ -58,9 +58,9 @@ export default class Adventures extends Component {
     });
   }
 
-  editAdventure() {
+  editAdventure(adventureUpdates) {
     console.log('Edit Adventure');
-    axios.post('/api/adventures/' + this.state.currentAdventure.id).then(res => {
+    axios.post('/api/adventures/' + this.state.currentAdventure.id, adventureUpdates).then(res => {
       this.getAdventures();
       //reset currentAdventure to the one that was just edited
     })

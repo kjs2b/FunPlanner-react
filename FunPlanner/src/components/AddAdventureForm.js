@@ -12,7 +12,7 @@ export default class AddAdventureForm extends Component {
       notes: '',
       priority: 'Low',
       image: null,
-      link: ''
+      link: '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

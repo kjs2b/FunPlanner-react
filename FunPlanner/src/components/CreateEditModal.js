@@ -29,6 +29,10 @@ export default class CreateEditModal extends Component {
     });
   }
 
+  handleEditSubmission() {
+    this.props.submitChanges(this.state);
+  }
+
   render() {
     return (
     <form className='addAdventureForm'>
@@ -118,7 +122,7 @@ export default class CreateEditModal extends Component {
       </div>
       <button
         className='formItem'
-        onClick={this.props.submitChanges}
+        onClick={this.handleEditSubmission.bind(this)}
       >
         Submit changes
       </button>

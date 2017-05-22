@@ -145,13 +145,24 @@ app.post('/api/adventures', (req, res) => {
 
 app.post('/api/adventures/:adventureID', (req, res) => {
   const adventureID = parseInt(req.params.adventureID);
+  const adventure = req.body;
   console.log('Edit adventure where ID = ' + adventureID);
-  res.status(200).send();
+  console.log(req.body);
+  db.run("UPDATE adventures " + 
+    "SET title = " + req.body.title + ", cateogory = " + req.body.category +
+        ", location = " + req.body.location + ", link = " + req.body.link +
+        ", priority = " + req.body.priority + ", notes = " + req.body.notes + " " + 
+    "WHERE id = " + adventureID + ";", (err, row) => {
+        console.log('row: ', row);
+        res.status(200).send();
+  });
+  // db.run("UPDATE adventures SET title = :title, category = :category, location = :locaation, " + 
+  //   "link = :link, priority = :priority, notes = :notes " + 
+  //   "WHERE id = " + adventureID, adventure);
 })
 
 app.delete('/api/adventures/:adventureID', (req, res) => {
   const adventureID = parseInt(req.params.adventureID);
-  console.log('Delete where ID = ' + adventureID);
   db.run("DELETE FROM adventures WHERE id=" + adventureID + ";", (err, row) => {
     res.status(200).send();
   })
