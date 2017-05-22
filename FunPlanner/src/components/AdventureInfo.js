@@ -8,7 +8,6 @@ export default class AdventureInfo extends Component {
     this.state = {};
 
     this.handleEdit = this.handleEdit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
 
   findIcon() {
@@ -23,14 +22,6 @@ export default class AdventureInfo extends Component {
   handleEdit() {
     console.log("edit");
   }
-
-  handleDelete() {
-    console.log('Delete');
-    axios.delete('/api/adventures/' + this.props.adventure.id).then(res => {
-      console.log('Deleted!');
-    });
-  }
-
 
   render() {
     return (
@@ -59,7 +50,7 @@ export default class AdventureInfo extends Component {
           <button
             type='button'
             className='editDeleteButton'
-            onClick={this.handleDelete}
+            onClick={this.props.deleteAdventure}
           >
             Delete
           </button>

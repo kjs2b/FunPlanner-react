@@ -16,14 +16,17 @@ export default class Adventures extends Component {
     };
     this.changeCategory = this.changeCategory.bind(this);
     this.changeAdventure = this.changeAdventure.bind(this);
+    this.deleteAdventure = this.deleteAdventure.bind(this);
   }
 
   componentDidMount () {
+    this.getAdventures();
+  }
+
+  getAdventures() {
     axios.get('/api/adventures').then((res) => {
       this.setState({ adventures: res.data });
-      console.log('Response', res.data);
     });
-    console.log('Between api calls');
   }
 
   changeCategory(cat) {
@@ -32,6 +35,12 @@ export default class Adventures extends Component {
 
   changeAdventure(adv) {
     this.setState({ currentAdventure: adv });
+  }
+
+  deleteAdventure() {
+    axios.delete('/api/adventures/' + this.state.currentAdventure.id).then(res => {
+      this.getAdventures();
+    });
   }
 
   render() {
@@ -64,7 +73,10 @@ export default class Adventures extends Component {
             />
           </div>
           <div className='adventureInfo'>
-            <AdventureInfo adventure={this.state.currentAdventure} />
+            <AdventureInfo
+              adventure={this.state.currentAdventure}
+              deleteAdventure={this.deleteAdventure}
+            />
           </div>
         </div>
       );
