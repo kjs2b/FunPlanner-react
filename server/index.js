@@ -7,6 +7,7 @@ const jwks = require('jwks-rsa');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./funplanner_db.db');
+const secrets = require('./secrets');
 
 
 const app = express();
@@ -24,12 +25,10 @@ const authCheck = jwt({
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        // YOUR-AUTH0-DOMAIN name e.g prosper.auth0.com
-        jwksUri: "https://{YOUR-AUTH0-DOMAIN}/.well-known/jwks.json"
+        jwksUri: secrets.jwksUri
     }),
-    // This is the identifier we set when we created the API
-    audience: '{YOUR-API-AUDIENCE-ATTRIBUTE}',
-    issuer: '{YOUR-AUTH0-DOMAIN}',
+    audience: secrets.audience,
+    issuer: secrets.issuer,
     algorithms: ['RS256']
 });
 
@@ -63,13 +62,13 @@ db.serialize(() => {
 //   res.status(200).send(adventureData);
 // });
 
-app.get('/api/adventures', (req, res) => {
+app.get('/api/adventures', authCheck, (req, res) => {
   db.all("SELECT * FROM adventures", (err, row) => {
     res.status(200).send(row);
   });
 });
 
-app.post('/api/adventures', (req, res) => {
+app.post('/api/adventures', authCheck, (req, res) => {
   const stmt = db.prepare("INSERT INTO adventures " + 
     "(title, category, location, link, priority, notes, date_posted, posted_by) " +
     "VALUES (?,?,?,?,?,?,?,?)");
@@ -87,19 +86,10 @@ app.post('/api/adventures', (req, res) => {
   stmt.finalize();
 });
 
-app.post('/api/adventures/:adventureID', (req, res) => {
+app.post('/api/adventures/:adventureID', authCheck, (req, res) => {
   const adventureID = parseInt(req.params.adventureID);
   const adventure = req.body;
-  console.log('Edit adventure where ID = ' + adventureID);
-  console.log(req.body);
-  // db.run("UPDATE adventures " + 
-  //   "SET title = " + req.body.title + ", cateogory = " + req.body.category +
-  //       ", location = " + req.body.location + ", link = " + req.body.link +
-  //       ", priority = " + req.body.priority + ", notes = " + req.body.notes + " " + 
-  //   "WHERE id = " + adventureID + ";", (err, row) => {
-  //       console.log('row: ', row);
-  //       res.status(200).send();
-  // });
+
   db.run("UPDATE adventures SET title = ?, category = ?, location = ?, " + 
     "link = ?, priority = ?, notes = ? " + 
     "WHERE id = " + adventureID,
@@ -108,7 +98,7 @@ app.post('/api/adventures/:adventureID', (req, res) => {
     ]);
 })
 
-app.delete('/api/adventures/:adventureID', (req, res) => {
+app.delete('/api/adventures/:adventureID', authCheck, (req, res) => {
   const adventureID = parseInt(req.params.adventureID);
   db.run("DELETE FROM adventures WHERE id=" + adventureID + ";", (err, row) => {
     res.status(200).send();

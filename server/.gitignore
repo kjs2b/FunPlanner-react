@@ -11,6 +11,7 @@
 
 #database
 funplanner_.db
+.db
 
 # misc
 .DS_Store
@@ -18,3 +19,6 @@ funplanner_.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#Auth
+secrets.js
