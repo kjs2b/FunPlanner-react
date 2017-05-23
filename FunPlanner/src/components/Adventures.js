@@ -20,6 +20,7 @@ export default class Adventures extends Component {
     this.changeAdventure = this.changeAdventure.bind(this);
     this.deleteAdventure = this.deleteAdventure.bind(this);
     this.editAdventure = this.editAdventure.bind(this);
+    this.createAdventure = this.createAdventure.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -62,6 +63,12 @@ export default class Adventures extends Component {
     });
   }
 
+  createAdventure(adventureData) {
+    axios.post('/api/adventures', adventureData).then(res => {
+      //this.getAdventures();
+    });
+  }
+
   editAdventure(adventureUpdates) {
     axios.post('/api/adventures/' + this.state.currentAdventure.id, adventureUpdates).then(res => {
       console.log('AdventureUpdates: ', adventureUpdates.id);
@@ -99,6 +106,7 @@ export default class Adventures extends Component {
           <CreateEditModal 
             adventure={this.state.currentAdventure}
             submitChanges={this.editAdventure}
+            createAdventure={this.createAdventure}
             closeModal={this.closeModal}
             formType={this.state.currentAdventure ? 'edit' : 'new'}
           />

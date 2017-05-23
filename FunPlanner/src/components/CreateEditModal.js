@@ -38,7 +38,11 @@ export default class CreateEditModal extends Component {
   }
 
   handleSubmission() {
-    this.props.submitChanges(this.state);
+    if(this.props.formType === 'edit') {
+      this.props.submitChanges(this.state);
+    } else {
+      this.props.createAdventure(this.state);
+    }
   }
 
   render() {
