@@ -20,7 +20,7 @@ export default class CreateEditModal extends Component {
         category: '',
         location: '',
         link: '',
-        priority: '',
+        priority: 'Low',
         notes: '',
       };
     }

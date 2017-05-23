@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CategoriesBar from './CategoriesBar';
 import ListContainer from './ListContainer';
-//import api from '../utils/api';
 import axios from 'axios';
 import AdventureInfo from './AdventureInfo';
 import Modal from 'react-modal';
@@ -16,6 +15,7 @@ export default class Adventures extends Component {
       currentAdventure: null,
       modalIsOpen: false
     };
+
     this.changeCategory = this.changeCategory.bind(this);
     this.changeAdventure = this.changeAdventure.bind(this);
     this.deleteAdventure = this.deleteAdventure.bind(this);
@@ -87,7 +87,7 @@ export default class Adventures extends Component {
           <ListContainer
             adventures={this.state.adventures}
             category={this.state.selectedCategory}
-            selectedAdventure={this.state.currentAdventure}
+            selectedAdventureID={this.state.currentAdventure ? this.state.currentAdventure.id : -1}
             changeAdventure={this.changeAdventure}
           />
         </div>

@@ -3,7 +3,7 @@ import React from 'react';
 export default function ListItem (props) {
   return (
     <div
-      className='listItem'
+      className={props.isSelected ? 'listItem activeListItem' : 'listItem'}
       onClick={props.onSelect.bind(null, props.item)}
     >
       <h5>{props.item.title}</h5>

@@ -18,6 +18,7 @@ export default class ListContainer extends Component {
               item={adv}
               key={adv.id}
               onSelect={this.props.changeAdventure}
+              isSelected={this.props.selectedAdventureID === adv.id}
             />
         )}
       </div>

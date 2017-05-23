@@ -82,6 +82,10 @@ a {
   font-family: BlinkMacSystemFont;
 }
 
+.activeListItem {
+  background-color: lightblue;
+}
+
 .nav {
   display: flex;
 }
