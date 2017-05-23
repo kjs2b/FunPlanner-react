@@ -6,10 +6,12 @@
     "react-scripts": "0.9.5"
   },
   "dependencies": {
+    "auth0-js": "^8.6.1",
     "axios": "^0.16.1",
     "body-parser": "^1.17.1",
     "cors": "^2.8.3",
     "express": "^4.15.2",
+    "jwt-decode": "^2.2.0",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
