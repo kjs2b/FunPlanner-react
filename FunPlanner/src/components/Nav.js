@@ -14,6 +14,11 @@ const Nav = () => (
         View Adventures
       </NavLink>
     </li>
+    <li>
+     { 
+       (isLoggedIn()) ? ( <button className="btn btn-danger log" onClick={() => logout()}>Log out </button> ) : ( <button className="btn btn-info log" onClick={() => login()}>Log In</button> )
+     }
+    </li>
   </ul>
 );
 
