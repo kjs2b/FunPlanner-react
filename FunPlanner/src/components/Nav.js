@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { login, logout, isLoggedIn } from '../utils/AuthService';
 
 const Nav = () => (
   <ul className='nav'>
