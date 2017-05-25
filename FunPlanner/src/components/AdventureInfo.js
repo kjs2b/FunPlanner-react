@@ -59,7 +59,7 @@ export default class AdventureInfo extends Component {
       );
     } else {
       return (
-        <div>
+        <div className='adventureInfoPlaceholder'>
           <h3>Select an adventure from list or click below to create a new one</h3>
           <center>
             <button
