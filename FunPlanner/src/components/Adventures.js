@@ -121,14 +121,14 @@ export default class Adventures extends Component {
 const styles = {
   modalStyle: {
     overlay:{
-
     },
     content: {
       position: 'absolute',
-      top: '100px',
-      left: '100px',
-      bottom: '100px',
-      right: '100px'
+      top: '10%',
+      left: '25%',
+      maxWidth: '50%',
+      minWidth: '300px',
+      maxHeight: '400px'
     }
   }
 };

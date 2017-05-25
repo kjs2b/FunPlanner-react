@@ -54,7 +54,7 @@ a {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  max-width: 800px;
+  max-width: 900px;
   align-self: center;
 }
 
