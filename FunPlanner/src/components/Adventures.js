@@ -92,6 +92,13 @@ export default class Adventures extends Component {
           />
         </div>
         <div className='adventureInfo'>
+          <button
+            type='button'
+            className='addAdventureButton'
+            onClick={this.openModal}
+          >
+            Add a new adventure!
+          </button>
           <AdventureInfo
             adventure={this.state.currentAdventure}
             deleteAdventure={this.deleteAdventure}

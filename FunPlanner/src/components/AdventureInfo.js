@@ -18,7 +18,6 @@ export default class AdventureInfo extends Component {
   }
 
   handleEdit() {
-    console.log("edit");
     this.props.openModal();
   }
 
@@ -60,16 +59,7 @@ export default class AdventureInfo extends Component {
     } else {
       return (
         <div className='adventureInfoPlaceholder'>
-          <h3>Select an adventure from list or click below to create a new one</h3>
-          <center>
-            <button
-              type='button'
-              className='addAdventureButton'
-              onClick={this.handleEdit}
-            >
-              Add new adventure!
-            </button>
-          </center>
+          <h3>Select an adventure from list or click above to create a new one</h3>
         </div>
       );
     }

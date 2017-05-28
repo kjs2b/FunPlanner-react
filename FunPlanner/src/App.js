@@ -23,7 +23,6 @@ const App = () => {
       <div className='container'>
         <Nav />
         <Switch>
-          <Route exact path='/' component={AddAdventureContainer} />
           <Route path='/list' component={Adventures} />
           <Route path='/callback' component={Callback} />
           <Route render={() => <p>Not Found</p>} />

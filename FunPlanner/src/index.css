@@ -28,12 +28,17 @@ a {
   align-items: center;
 }
 
+.addAdventureButton {
+  margin-left: 50px;
+}
+
 .adventures {
   display: flex;
 }
 
 .adventureInfo {
-  margin: 30px;
+  margin-left: 50px;
+  margin-top: 20px;
   width: 50%;
   /*background-color: lightblue;*/
 }
