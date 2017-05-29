@@ -62,13 +62,13 @@ db.serialize(() => {
 //   res.status(200).send(adventureData);
 // });
 
-app.get('/api/adventures', authCheck, (req, res) => {
+app.get('/api/adventures', (req, res) => {
   db.all("SELECT * FROM adventures", (err, row) => {
     res.status(200).send(row);
   });
 });
 
-app.post('/api/adventures', authCheck, (req, res) => {
+app.post('/api/adventures', (req, res) => {
   const stmt = db.prepare("INSERT INTO adventures " + 
     "(title, category, location, link, priority, notes, date_posted, posted_by) " +
     "VALUES (?,?,?,?,?,?,?,?)");
@@ -86,7 +86,7 @@ app.post('/api/adventures', authCheck, (req, res) => {
   stmt.finalize();
 });
 
-app.post('/api/adventures/:adventureID', authCheck, (req, res) => {
+app.post('/api/adventures/:adventureID', (req, res) => {
   const adventureID = parseInt(req.params.adventureID);
   const adventure = req.body;
 
@@ -98,7 +98,7 @@ app.post('/api/adventures/:adventureID', authCheck, (req, res) => {
     ]);
 })
 
-app.delete('/api/adventures/:adventureID', authCheck, (req, res) => {
+app.delete('/api/adventures/:adventureID', (req, res) => {
   const adventureID = parseInt(req.params.adventureID);
   db.run("DELETE FROM adventures WHERE id=" + adventureID + ";", (err, row) => {
     res.status(200).send();

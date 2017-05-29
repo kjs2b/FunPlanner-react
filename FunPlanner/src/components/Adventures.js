@@ -23,6 +23,7 @@ export default class Adventures extends Component {
     this.createAdventure = this.createAdventure.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.openAddAdventureModal = this.openAddAdventureModal.bind(this);
   }
 
   componentDidMount () {
@@ -46,6 +47,11 @@ export default class Adventures extends Component {
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+  }
+
+  openAddAdventureModal() {
+    this.setState({ currentAdventure: null });
+    this.openModal();
   }
 
   changeCategory(cat) {
@@ -92,6 +98,13 @@ export default class Adventures extends Component {
           />
         </div>
         <div className='adventureInfo'>
+          <button
+            type='button'
+            className='addAdventureButton'
+            onClick={this.openAddAdventureModal}
+          >
+            Add a new adventure!
+          </button>
           <AdventureInfo
             adventure={this.state.currentAdventure}
             deleteAdventure={this.deleteAdventure}
@@ -101,8 +114,9 @@ export default class Adventures extends Component {
         <Modal
           isOpen={this.state.modalIsOpen}
           contentLabel='Create & Edit Modal'
+          style={styles.modalStyle}
         >
-          <center><h2>Edit Adventure</h2></center>
+          <center><h2>{this.state.currentAdventure ? 'Edit Adventure' : 'Add New Adventure'}</h2></center>
           <CreateEditModal 
             adventure={this.state.currentAdventure}
             submitChanges={this.editAdventure}
@@ -115,3 +129,18 @@ export default class Adventures extends Component {
     );
   }
 }
+
+const styles = {
+  modalStyle: {
+    overlay:{
+    },
+    content: {
+      position: 'absolute',
+      top: '10%',
+      left: '25%',
+      maxWidth: '50%',
+      minWidth: '300px',
+      maxHeight: '400px'
+    }
+  }
+};

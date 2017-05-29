@@ -7,9 +7,9 @@ export default class CategoriesBar extends Component {
   }
 
   render() {
-    const categories = ['All', 'Hikes', 'Restaurants', 'Attractions', 'Destinations']
+    const categories = ['All', 'Hikes', 'Restaurants', 'Events', 'Destinations']
     return (
-      <ul className="categories">
+      <ul className="categoriesBar">
         {categories.map((cat) => 
           <li
             style={cat === this.props.selectedCategory ? {color: 'red'} : null}
