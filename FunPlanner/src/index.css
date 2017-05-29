@@ -16,12 +16,6 @@ a {
   color: blue;
 }
 
-.addAdventureContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .addAdventureForm {
   display: flex;
   flex-direction: column;
@@ -112,16 +106,8 @@ a {
   background-color: lightblue;
 }
 
-.nav {
-  display: flex;
-}
-
 .active {
   font-weight: bold;
-}
-
-.nav li {
-  margin-right: 15px;
 }
 
 .adventureIcon {
