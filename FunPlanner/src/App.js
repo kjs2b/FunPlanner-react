@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //import AuthService from './utils/AuthService'
 import Adventures from './components/Adventures';
-import Nav from './components/Nav';
+import TopBar from './components/TopBar';
 import Callback from './components/Callback';
 //import Login from './components/Login';
 
@@ -20,7 +20,7 @@ const App = () => {
   return (
     <Router>
       <div className='container'>
-        <Nav />
+        <TopBar />
         <Switch>
           <Route path='/' component={Adventures} />
           <Route path='/callback' component={Callback} />
