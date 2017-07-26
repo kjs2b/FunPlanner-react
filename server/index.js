@@ -2,12 +2,12 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const jwt = require('express-jwt');
-const jwks = require('jwks-rsa');
+//const jwt = require('express-jwt');
+//const jwks = require('jwks-rsa');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./funplanner_db.db');
-const secrets = require('./secrets');
+//const secrets = require('./secrets');
 
 
 const app = express();
@@ -20,17 +20,17 @@ app.use(cors());
 
 
 //AUTHENTICATION
-const authCheck = jwt({
-  secret: jwks.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 5,
-        jwksUri: secrets.jwksUri
-    }),
-    audience: secrets.audience,
-    issuer: secrets.issuer,
-    algorithms: ['RS256']
-});
+// const authCheck = jwt({
+//   secret: jwks.expressJwtSecret({
+//         cache: true,
+//         rateLimit: true,
+//         jwksRequestsPerMinute: 5,
+//         jwksUri: secrets.jwksUri
+//     }),
+//     audience: secrets.audience,
+//     issuer: secrets.issuer,
+//     algorithms: ['RS256']
+// });
 
 
 //DATABASE
@@ -58,9 +58,6 @@ db.serialize(() => {
 
 
 //routes
-// app.get('/api/adventures', (req, res) => {
-//   res.status(200).send(adventureData);
-// });
 
 app.get('/api/adventures', (req, res) => {
   db.all("SELECT * FROM adventures", (err, row) => {
