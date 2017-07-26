@@ -7,11 +7,11 @@ const TopBar = () => (
     <div style={styles.headerContainer}>
       <h2 style={styles.headerStyle}>Fun Planner</h2>
     </div>
-    <div style={styles.logButtonContainer}>
+    {/*<div style={styles.logButtonContainer}>
        { 
          (isLoggedIn()) ? ( <button style={styles.buttonStyle} onClick={() => logout()}>Log out </button> ) : ( <button style={styles.buttonStyle} onClick={() => login()}>Log In</button> )
        }
-    </div>
+    </div>*/}
   </div>
 );
 
