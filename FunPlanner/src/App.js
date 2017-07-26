@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //import AuthService from './utils/AuthService'
 import Adventures from './components/Adventures';
-import Nav from './components/Nav';
-import AddAdventureContainer from './components/AddAdventureContainer';
+import TopBar from './components/TopBar';
 import Callback from './components/Callback';
 //import Login from './components/Login';
 
@@ -21,9 +20,9 @@ const App = () => {
   return (
     <Router>
       <div className='container'>
-        <Nav />
+        <TopBar />
         <Switch>
-          <Route path='/list' component={Adventures} />
+          <Route path='/' component={Adventures} />
           <Route path='/callback' component={Callback} />
           <Route render={() => <p>Not Found</p>} />
         </Switch>
