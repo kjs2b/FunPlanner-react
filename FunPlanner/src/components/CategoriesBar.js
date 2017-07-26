@@ -12,7 +12,7 @@ export default class CategoriesBar extends Component {
       <ul className="categoriesBar">
         {categories.map((cat) => 
           <li
-            style={cat === this.props.selectedCategory ? {color: 'red'} : null}
+            style={cat === this.props.selectedCategory ? {color: '#93D156'} : null}
             key={cat}
             onClick={this.props.onSelect.bind(null, cat)}
           >

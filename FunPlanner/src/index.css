@@ -1,6 +1,8 @@
 body {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,
     Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+  background-color: #DEDEDE;
+  overflow-y: hidden;
 }
 
 ul {
@@ -14,12 +16,6 @@ li {
 a {
   text-decoration: none;
   color: blue;
-}
-
-.addAdventureContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .addAdventureForm {
@@ -40,7 +36,6 @@ a {
   margin-left: 50px;
   margin-top: 20px;
   width: 50%;
-  /*background-color: lightblue;*/
 }
 
 .adventureInfoPlaceholder {
@@ -81,12 +76,16 @@ a {
   margin: 6px;
   font-weight: bold;
   cursor: pointer;
+  /*color: #49E3D4;*/
 }
 
 .listContainer {
   width: 100%;
   padding-right: 20px;
   padding-left: 20px;
+  overflow-y: auto;
+  height: 500px;
+
 }
 
 .listItem {
@@ -97,7 +96,7 @@ a {
   border-style: outset;
   border-width: 3px;
   font-family: BlinkMacSystemFont;
-  width: 100%;
+  width: 93%;
 }
 
 .listItemTitle {
@@ -109,19 +108,11 @@ a {
 }
 
 .activeListItem {
-  background-color: lightblue;
-}
-
-.nav {
-  display: flex;
+  background-color: #93D156;
 }
 
 .active {
   font-weight: bold;
-}
-
-.nav li {
-  margin-right: 15px;
 }
 
 .adventureIcon {
