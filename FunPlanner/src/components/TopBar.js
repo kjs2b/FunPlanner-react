@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { login, logout, isLoggedIn } from '../utils/AuthService';
+// import { login, logout, isLoggedIn } from '../utils/AuthService';
 
 const TopBar = () => (
   <div style={styles.navBarStyle}>

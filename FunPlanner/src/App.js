@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //import AuthService from './utils/AuthService'
 import Adventures from './components/Adventures';
 import TopBar from './components/TopBar';
-import Callback from './components/Callback';
+//import Callback from './components/Callback';
 //import Login from './components/Login';
 
 
@@ -23,7 +23,6 @@ const App = () => {
         <TopBar />
         <Switch>
           <Route path='/' component={Adventures} />
-          <Route path='/callback' component={Callback} />
           <Route render={() => <p>Not Found</p>} />
         </Switch>
       </div>
