@@ -104,7 +104,7 @@ app.delete('/api/adventures/:adventureID', (req, res) => {
 
 
 //listen
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5001;
 app.listen(port);
 console.log('Listening on port ' + port);
 
