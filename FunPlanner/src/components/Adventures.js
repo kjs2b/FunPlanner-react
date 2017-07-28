@@ -5,6 +5,20 @@ import axios from 'axios';
 import AdventureInfo from './AdventureInfo';
 import Modal from 'react-modal';
 import CreateEditModal from './CreateEditModal';
+const styles = {
+  modalStyle: {
+    overlay:{
+    },
+    content: {
+      position: 'absolute',
+      top: '10%',
+      left: '25%',
+      maxWidth: '50%',
+      minWidth: '300px',
+      maxHeight: '400px'
+    }
+  }
+};
 
 export default class Adventures extends Component {
   constructor (props) {
@@ -129,18 +143,3 @@ export default class Adventures extends Component {
     );
   }
 }
-
-const styles = {
-  modalStyle: {
-    overlay:{
-    },
-    content: {
-      position: 'absolute',
-      top: '10%',
-      left: '25%',
-      maxWidth: '50%',
-      minWidth: '300px',
-      maxHeight: '400px'
-    }
-  }
-};
